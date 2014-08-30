@@ -1,0 +1,29 @@
+<h1>Listing blog_reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>File title</th>
+      <th>Title</th>
+      <th>Body</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @blog_reports.each do |blog_report| %>
+      <tr>
+        <td><%= blog_report.file_title %></td>
+        <td><%= blog_report.title %></td>
+        <td><%= blog_report.body %></td>
+        <td><%= link_to 'Show', blog_report %></td>
+        <td><%= link_to 'Edit', edit_blog_report_path(blog_report) %></td>
+        <td><%= link_to 'Destroy', blog_report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Blog report', new_blog_report_path %>
