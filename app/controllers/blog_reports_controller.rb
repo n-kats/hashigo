@@ -28,6 +28,10 @@ class BlogReportsController < ApplicationController
 
     respond_to do |format|
       if @blog_report.save
+        
+        #NOTE very danger
+        @blog_report.post_and_push
+
         format.html { redirect_to @blog_report, notice: 'Blog report was successfully created.' }
         format.json { render :show, status: :created, location: @blog_report }
       else
