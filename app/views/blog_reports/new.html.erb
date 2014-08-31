@@ -3,3 +3,15 @@
 <%= render 'form' %>
 
 <%= link_to 'Back', blog_reports_path %>
+<pre id="preview_body"></pre>
+<script data-turbolinks-track="true" src="/javascripts/showdown.js"></script>
+<script>
+var conv = new Showdown.converter();
+
+$("#blog_report_body").keyup(function(){
+    var plain_text = $("#blog_report_body").val();
+    var x = conv.makeHtml(plain_text);
+    $("#preview_body").html(x);
+    });
+
+</script>
