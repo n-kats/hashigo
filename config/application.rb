@@ -9,6 +9,7 @@ Bundler.require(*Rails.groups)
 module Hashigo
   class Application < Rails::Application
     config.generators.template_engine = :slim
+    Slim::Engine.set_default_options pretty: true, sort_attrs: false
     # config.generators.test_framework  = :rspec
     config.generators.stylesheets = false
     config.generators.javascripts = false

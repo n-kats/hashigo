@@ -1,0 +1,17 @@
+p#notice = notice
+
+p
+  strong File title:
+  = @blog_report.file_title
+
+p
+  strong Title:
+  = @blog_report.title
+
+p
+  strong Body:
+  = @blog_report.body
+
+= link_to 'Edit', edit_blog_report_path(@blog_report)
+| |
+= link_to 'Back', blog_reports_path
