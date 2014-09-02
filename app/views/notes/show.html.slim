@@ -1,0 +1,18 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @note.title
+p
+  strong Tag:
+  = @note.tag
+p
+  strong Body:
+  = @note.body
+p
+  strong Comment:
+  = @note.comment
+
+= link_to 'Edit', edit_note_path(@note)
+'|
+= link_to 'Back', notes_path
