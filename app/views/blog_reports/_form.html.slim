@@ -7,22 +7,21 @@
       ul
         - @blog_report.errors.full_messages.each do |message|
           li = message
-
-  .field
-    = f.label :file_title
-    br
-    = f.text_field :file_title
   
-  .field
-    = f.label :title
-    br
-    = f.text_field :title
+  .actions.form-group
+    = f.submit class: "btn btn-primary"
 
-  .field
-    = f.label :body
-    br
-    = f.text_area :body
+  .row
+    .col-xs-4
+      .field.form-group
+        = f.text_field :file_title, class: "form-control", placeholder: "File Title"
+
+    .col-xs-4
+      .field.form-group
+        = f.text_field :title, class: "form-control", placeholder: "Title"
+  .row
+    .field.form-group
+      = f.text_area :body, class: "form-control", rows: 10, placeholder: "Body"
+
   
-  .actions
-    = f.submit
 

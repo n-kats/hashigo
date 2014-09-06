@@ -1,27 +1,25 @@
 h1 Listing notes
 
-table
+= link_to 'New Note', new_note_path
+
+table.table
   thead
     tr
-      th Title
-      th Tag
-      th Body
-      th Comment
-      th
-      th
-      th
+      th.col-xs-1 Title
+      th.col-xs-1 Tag
+      th.col-xs-5 Body
+      th.col-xs-4 Comment
+      th.col-xs-1
 
   tbody
-    - @notes.each do |note|
+    - @notes.reverse_each do |note|
       tr
-        td = note.title
+        td = link_to note.title, note
         td = note.tag
-        td = note.body
-        td = note.comment
-        td = link_to 'Show', note
-        td = link_to 'Edit', edit_note_path(note)
-        td = link_to 'Destroy', note, data: {:confirm => 'Are you sure?'}, :method => :delete
+        td = truncate note.body, length: 100
+        td = truncate note.comment, length: 100
+        td
+          = link_to 'Edit', edit_note_path(note)
+          br
+          = link_to 'Destroy', note, data: {:confirm => 'Are you sure?'}, :method => :delete
 
-br
-
-= link_to 'New Note', new_note_path
