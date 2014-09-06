@@ -5,15 +5,15 @@ RSpec.describe "notes/index", :type => :view do
     assign(:notes, [
       Note.create!(
         :title => "Title",
-        :tag => "Tag",
-        :body => "MyText",
-        :comment => "MyText"
+        :tag => "TagTag",
+        :body => "MyTextB",
+        :comment => "MyTextC"
       ),
       Note.create!(
         :title => "Title",
-        :tag => "Tag",
-        :body => "MyText",
-        :comment => "MyText"
+        :tag => "TagTag",
+        :body => "MyTextB",
+        :comment => "MyTextC"
       )
     ])
   end
@@ -21,8 +21,8 @@ RSpec.describe "notes/index", :type => :view do
   it "renders a list of notes" do
     render
     assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "Tag".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
-    assert_select "tr>td", :text => "MyText".to_s, :count => 2
+    assert_select "tr>td", :text => "TagTag".to_s, :count => 2
+    assert_select "tr>td", :text => "MyTextB".to_s, :count => 2
+    assert_select "tr>td", :text => "MyTextC".to_s, :count => 2
   end
 end

@@ -4,7 +4,7 @@ RSpec.describe "links/edit", :type => :view do
   before(:each) do
     @link = assign(:link, Link.create!(
       :name => "MyString",
-      :url => "MyString",
+      :url => "https://MyString",
       :description => "MyText"
     ))
   end
