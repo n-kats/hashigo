@@ -1,10 +1,12 @@
 require 'rails_helper'
 
+#FIXME
 RSpec.describe "pdfs/show", :type => :view do
   before(:each) do
+    sample_pdf_path = File.expand_path('../sample.pdf', __FILE__) 
     @pdf = assign(:pdf, Pdf.create!(
       :title => "Title",
-      :document => ""
+      :document => File.binread(sample_pdf_path)
     ))
   end
 
