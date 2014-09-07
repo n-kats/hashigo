@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @pdf.title
+p
+  strong Document:
+  = @pdf.document
+
+= link_to 'Edit', edit_pdf_path(@pdf)
+'|
+= link_to 'Back', pdfs_path

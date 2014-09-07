@@ -1,0 +1,23 @@
+h1 Listing pdfs
+
+table
+  thead
+    tr
+      th Title
+      th Document
+      th
+      th
+      th
+
+  tbody
+    - @pdfs.each do |pdf|
+      tr
+        td = pdf.title
+        td = pdf.document
+        td = link_to 'Show', pdf
+        td = link_to 'Edit', edit_pdf_path(pdf)
+        td = link_to 'Destroy', pdf, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Pdf', new_pdf_path
