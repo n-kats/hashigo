@@ -5,7 +5,10 @@ p
   = @pdf.title
 p
   strong Document:
-  = @pdf.document
+  = content_tag :iframe,'', height: "", width: "480", src: pdf_path(format: :pdf)
+
+= link_to 'pdf', pdf_path(format: :pdf)
+
 
 = link_to 'Edit', edit_pdf_path(@pdf)
 '|

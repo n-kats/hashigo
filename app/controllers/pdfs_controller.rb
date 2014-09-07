@@ -9,7 +9,13 @@ class PdfsController < ApplicationController
 
   # GET /pdfs/1
   # GET /pdfs/1.json
+  # GET /pdfs/1.pdf
   def show
+    respond_to do |format|
+      format.html {}
+      format.json {} # TODO: editjbuilder
+      format.pdf { send_data @pdf.document, type: "application/pdf", disposition: :inline}
+    end
   end
 
   # GET /pdfs/new
@@ -25,7 +31,7 @@ class PdfsController < ApplicationController
   # POST /pdfs.json
   def create
     @pdf = Pdf.new(pdf_params)
-
+    @pdf.document = params[:pdf][:document].read
     respond_to do |format|
       if @pdf.save
         format.html { redirect_to @pdf, notice: 'Pdf was successfully created.' }
@@ -69,6 +75,6 @@ class PdfsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pdf_params
-      params.require(:pdf).permit(:title, :document)
+      params.require(:pdf).permit(:title)
     end
 end
