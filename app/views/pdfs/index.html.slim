@@ -4,7 +4,6 @@ table
   thead
     tr
       th Title
-      th Document
       th
       th
       th
@@ -13,7 +12,6 @@ table
     - @pdfs.each do |pdf|
       tr
         td = pdf.title
-        td = pdf.document
         td = link_to 'Show', pdf
         td = link_to 'Edit', edit_pdf_path(pdf)
         td = link_to 'Destroy', pdf, data: {:confirm => 'Are you sure?'}, :method => :delete
