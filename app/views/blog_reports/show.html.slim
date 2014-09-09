@@ -10,7 +10,7 @@ p
 
 p
   strong Body:
-  = @blog_report.body
+  = simple_format @blog_report.body
 
 = link_to 'Edit', edit_blog_report_path(@blog_report)
 | |

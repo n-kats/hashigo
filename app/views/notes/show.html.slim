@@ -8,10 +8,10 @@ p
   = @note.tag
 p
   strong Body:
-  = @note.body
+  = simple_format @note.body
 p
   strong Comment:
-  = @note.comment
+  = simple_format @note.comment
 
 = link_to 'Edit', edit_note_path(@note)
 '|
