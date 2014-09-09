@@ -3,9 +3,10 @@ p#notice = notice
 p
   strong Title:
   = @pdf.title
-p
-  strong Document:
-  = content_tag :iframe,'', height: "", width: "480", src: pdf_path(format: :pdf)
+
+.well.well-sm
+  .embed-responsive.embed-responsive-16by9
+    = tag :iframe, class: "embed-responsive-item", src: pdf_path(format: :pdf)
 
 = link_to 'pdf', pdf_path(format: :pdf)
 
