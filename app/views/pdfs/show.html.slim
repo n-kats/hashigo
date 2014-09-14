@@ -1,16 +1,34 @@
 p#notice = notice
+.container-fluid
+  .well.well-sm
+    .embed-responsive.embed-responsive-16by9
+      = content_tag :iframe,"", class: "embed-responsive-item", src: pdf_path(format: :pdf)
 
-p
-  strong Title:
-  = @pdf.title
+= button_tag "INFO", data:{toggle: "modal", target:"#info_modal"}, class: "btn"
 
-.well.well-sm
-  .embed-responsive.embed-responsive-16by9
-    = tag :iframe, class: "embed-responsive-item", src: pdf_path(format: :pdf)
+.modal.fade#info_modal
+  .modal-dialog
+    .modal-content
+      p
+        strong Title: 
+        = @pdf.title
+      p
+        = link_to 'PDF', pdf_path(format: :pdf)
+        '|
+        = link_to 'Edit', edit_pdf_path(@pdf)
 
-= link_to 'pdf', pdf_path(format: :pdf)
+= button_tag "NOTE", data:{toggle: "modal", target:"#note_modal"}, class: "btn"
 
-
-= link_to 'Edit', edit_pdf_path(@pdf)
-'|
-= link_to 'Back', pdfs_path
+.modal.fade#note_modal
+  .modal-dialog.modal-lg
+    .modal-content
+      .container
+        - @note = Note.new
+        = render 'notes/form'
+        
+= button_tag "PDF", data:{toggle: "modal", target:"#pdf_modal"}, class: "btn"
+.modal.fade#pdf_modal
+  .modal-dialog.modal-lg
+    .modal-content
+      .embed-responsive.embed-responsive-4by3
+        = content_tag :iframe,"", class: "embed-responsive-item", src: pdf_path(format: :pdf)
