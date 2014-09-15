@@ -6,9 +6,6 @@
         - @note.errors.full_messages.each do |message|
           li = message
 
-  .actions.form-group
-    = f.submit 'Save', class: "btn btn-primary"
-
   .row
     .col-xs-4
       .field.form-group
@@ -17,13 +14,17 @@
     .col-xs-4
       .field.form-group
         = f.text_field :tag, class: "form-control", placeholder: :tag
+    .col-xs-4
+      .actions.form-group
+        = f.submit 'Save', class: "btn btn-primary"
+
 
   .row
-    .container
+    .col-xs-12
       .field.form-group
         = f.text_area :body, class: "form-control", placeholder: :body, rows: 10
   .row
-    .container
+    .col-xs-12
       .field.form-group
-        = f.text_area :comment, class: "form-control", placeholder: :comment, rows: 7
+        = f.text_area :comment, class: "form-control", placeholder: :comment, rows: 3
     

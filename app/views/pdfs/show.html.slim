@@ -19,10 +19,9 @@ p#notice = notice
 
 = button_tag "NOTE", data:{toggle: "modal", target:"#note_modal"}, class: "btn"
 
-.modal.fade#note_modal
+.modal.fade#note_modal role="dialog"
   .modal-dialog.modal-lg
-    .modal-content
-      .container
+    .well
         - @note = Note.new
         = render 'notes/form'
         
