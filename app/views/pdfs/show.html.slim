@@ -31,3 +31,51 @@ p#notice = notice
     .modal-content
       .embed-responsive.embed-responsive-4by3
         = content_tag :iframe,"", class: "embed-responsive-item", src: pdf_path(format: :pdf)
+
+= button_tag "Draw", data:{toggle: "modal", target:"#draw_modal"}, class: "btn", id: "draw_btn"
+.modal.fade#draw_modal
+  .modal-dialog
+    canvas#draw width=480 height=640 style="background-color: none;border: 10px solid #999;margin: 0 auto;"
+
+
+coffee:
+  can = document.getElementById("draw")
+  unless can && can.getContext
+    console.log("not ok")
+    console.log can
+    console.log can.getContext
+    return false
+  ctx = can.getContext "2d"
+  startX = 0
+  startY = 0
+  x = 0
+  y = 0
+  isDrawing = false
+  borderWidth= 10
+  $ "#draw"
+    .mousedown (e)->
+      startX = e.pageX - $(this).offset().left - borderWidth
+      startY = e.pageY - $(this).offset().top - borderWidth
+      isDrawing = true
+      return
+
+    .mousemove (e)->
+      return unless isDrawing
+      x = e.pageX - $(this).offset().left - borderWidth
+      y = e.pageY - $(this).offset().top - borderWidth
+      ctx.beginPath()
+      ctx.moveTo(startX,startY)
+      ctx.lineTo(x,y)
+      ctx.stroke()
+      startX = x
+      startY = y
+      return
+
+    .mouseup ->
+      isDrawing = false
+      return
+    .mouseleave ->
+      isDrawing = false
+      return
+
+
